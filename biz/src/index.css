@@ -2,5 +2,5 @@
 
 .bg {
     transform: rotate(-7deg);
-    background-color: @color-primary;
+    background-color: red;
 }

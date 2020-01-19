@@ -18,6 +18,27 @@ const prodConfig = {
     plugins: [// 插件可以在webpack生命周期中某些时刻做一些事情
         new CleanWebpackPlugin({})
     ],
+    module: {
+        rules: [
+            {// https://babeljs.io/docs/en/usage
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    babelrc: false,// 不采用.babelrc的配置
+                    presets: [
+                        '@babel/preset-env',
+                        '@babel/preset-react'// presets执行顺序也是从后往前,若使用了@babel/preset-env,则先执行@babel/preset-react
+                    ],
+                    plugins: [
+                        ['@babel/plugin-transform-runtime', { corejs: 3 }],
+                        ['import', { libraryName: 'antd', style: true }, 'antd'],// https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
+                        ['import', { libraryName: 'antd-mobile', style: true}, 'antd-mobile']// https://github.com/ant-design/ant-design-mobile/blob/master/components/style/themes/default.less
+                    ]
+                }
+            }
+        ]
+    },
     optimization: {
         minimizer: [
             new OptimizeCSSAssetsPlugin({}),// 压缩css

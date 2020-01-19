@@ -142,38 +142,6 @@ const commonConfig = {
                     }
                 ]
             },
-            {// https://babeljs.io/docs/en/usage
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                options: {
-                    babelrc: false,// 不采用.babelrc的配置
-                    presets: [
-                        // npm i -D @babel/preset-env
-                        /*
-                        ['@babel/preset-env', {
-                            // 要兼容到的目标浏览器
-                            targets: {
-                                "edge": "17",
-                                "firefox": "60",
-                                "chrome": "67",
-                                "safari": "11.1",
-                            },
-                            //useBuiltIns: 'usage'// 按需加载@babel/polyfill,会污染全局环境,使用@babel/plugin-transform-runtime代替
-                        }],
-                        */
-                        '@babel/preset-env',
-                        '@babel/preset-react'// presets执行顺序也是从后往前,若使用了@babel/preset-env,则先执行@babel/preset-react
-                    ],
-                    // npm i -D @babel/plugin-transform-runtime
-                    // npm i -S @babel/runtime-corejs2
-                    plugins: [
-                        ['@babel/plugin-transform-runtime', { corejs: 3 }],
-                        ['import', { libraryName: 'antd', style: true }, 'antd'],// https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
-                        ['import', { libraryName: 'antd-mobile', style: true}, 'antd-mobile']// https://github.com/ant-design/ant-design-mobile/blob/master/components/style/themes/default.less
-                    ]
-                }
-            },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 exclude: /node_modules/,
