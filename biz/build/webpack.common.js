@@ -152,6 +152,7 @@ const commonConfig = {
     plugins: [// 插件可以在webpack生命周期中某些时刻做一些事情
         new HtmlWebpackPlugin({ 
             template: path.resolve(rootPath, 'index.html'),
+            favicon: path.resolve(rootPath, 'favicon.ico'),
             title: 'biz'
         }),
         new MiniCssExtractPlugin({}),
